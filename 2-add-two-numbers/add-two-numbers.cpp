@@ -18,15 +18,19 @@ public:
         int carry=0;
         while(temp1!=NULL||temp2!=NULL){
             int sum =carry;
-            if(temp1!=NULL) sum=sum+temp1->val;
-            if(temp2!=NULL) sum=sum+temp2->val;
+            if(temp1!=NULL){ sum=sum+temp1->val;
+             temp1=temp1->next;
+            }
+            if(temp2!=NULL){ sum=sum+temp2->val;
+            temp2=temp2->next;
+            }
             ListNode* newNode = new ListNode(sum % 10);
 
             carry=sum/10;
             curr->next=newNode;
             curr=curr->next;
-            if(temp1!=NULL) temp1=temp1->next;
-            if(temp2!=NULL) temp2=temp2->next;
+            
+            
         }
         if(carry!=0){
            ListNode* newNode=new ListNode(carry);
